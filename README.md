@@ -1,4 +1,5 @@
 # Exotic-Higgs-Study
+[![Dataset on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-sm.svg)](https://huggingface.co/datasets/Avencast/EveNet-ExoticHiggs-H2a4b)
 This repository contains the code and data for the Exotic Higgs Study, 
 which investigates potential new physics phenomena in the Higgs boson sector.
 ## Installation
@@ -45,5 +46,7 @@ hf download Avencast/EveNet-ExoticHiggs-H2a4b \
   --repo-type dataset \
   --local-dir database
 ```
+
+
 
 
