@@ -52,7 +52,6 @@ def prepare_script(args):
 
     with open(os.path.join(config_farm, "prepare-dataset.sh"), 'w') as f:
         for mass in masses:
-            f.write(f"cd {working_dir}\n")
             for split in ["train", "test"]:
                 f.write(f"python3 convert_evenet_to_spanet.py {cwd}/configs/event_info_{mass}.yaml --in_dir {args.store_dir}/evenet-{split}/evenet-ma{mass} --store_dir {args.store_dir}/spanet-{split}/spanet-ma{mass}\n")
             for pretrain in pretrain_choice:
