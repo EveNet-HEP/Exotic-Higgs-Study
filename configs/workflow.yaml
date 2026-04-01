@@ -26,6 +26,7 @@ pretrain_choice:
     path: null
     option: options.yaml
 
+image: 'docker:avencast1994/evenet:1.5'
 assign_seg_choice:
   - [true, true]
   - [true, false]
