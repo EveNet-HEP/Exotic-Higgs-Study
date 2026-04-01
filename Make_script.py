@@ -34,7 +34,7 @@ def prepare_script(args):
         predict_template = yaml.safe_load(f)
 
     process_json = os.path.abspath(control['process_json'])
-    stat_yml = os.path.abspath(control['stat_yml'])
+    stat_yml = os.path.abspath(control['stat_yaml'])
 
 
     # ============= Candidates =============
