@@ -26,8 +26,24 @@ Pull the Docker image for the EveNet training:
 ```aiignore
 shifterimg -v pull docker:avencast1994/evenet:1.5
 ```
+## Dataset prepare [Hugging Face]
+The dataset used in this study is available on Hugging Face. You can access it using the following link:
+[Exotic Higgs Dataset on Hugging Face](https://huggingface.co/datasets/Avencast/EveNet-ExoticHiggs-H2a4b)
+(Note: The dataset is large, so ensure you have sufficient storage space before downloading. `--local-dir` option allows you to specify the directory where the dataset will be stored.)
+#### 🔹 Download full dataset
+```aiignore
+hf download Avencast/EveNet-ExoticHiggs-H2a4b \
+  --repo-type dataset \
+  --local-dir database
+```
 
-
-
+#### 🔹 Download a subset of the dataset (e.g., certain mass points)
+```aiignore
+hf download Avencast/EveNet-ExoticHiggs-H2a4b \
+    evenet-train/evenet-ma30 \ 
+    evenet-test/evenet-ma30 \
+  --repo-type dataset \
+  --local-dir database \
+```
 
 
