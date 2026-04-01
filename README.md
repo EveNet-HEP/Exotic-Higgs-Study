@@ -40,8 +40,8 @@ hf download Avencast/EveNet-ExoticHiggs-H2a4b \
 #### 🔹 Download a subset of the dataset (e.g., certain mass points)
 ```aiignore
 hf download Avencast/EveNet-ExoticHiggs-H2a4b \
-    evenet-train/evenet-ma30 \
-    evenet-test/evenet-ma30 \
+  --include "evenet-train/evenet-ma30/**" \
+  --include "evenet-test/evenet-ma30/**"
   --resume-download \
   --repo-type dataset \
   --local-dir database
