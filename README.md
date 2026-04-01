@@ -63,10 +63,10 @@ The training and evaluation scripts are controlled by `config/workflow.yaml`. Yo
 ```yaml
 working_dir: [PATH_TO_EveNet_WORKING_DIRECTORY]
 spanet_dir: [PATH_TO_SPANet_WORKING_DIRECTORY]
-train_yaml: train.yaml [relative path under config dir] # don't need to change if you use the provided train.yaml
-predict_yaml: predict.yaml [relative path under config dir] # don't need to change if you use the provided predict.yaml
-process_json: process.json [relative path under config dir] # don't need to change if you use the provided process.json
-stat_yml: Statistics_Test.yml [relative path under config dir] # don't need to change if you use the provided Statistics_Test.yml
+train_yaml: train.yaml [relative path under configs dir] # don't need to change if you use the provided train.yaml
+predict_yaml: predict.yaml [relative path under configs dir] # don't need to change if you use the provided predict.yaml
+process_json: process.json [relative path under configs dir] # don't need to change if you use the provided process.json
+stat_yml: Statistics_Test.yml [relative path under configs dir] # don't need to change if you use the provided Statistics_Test.yml
 account: # your project account
 email: # your email account
 time: 04:00:00 # job time

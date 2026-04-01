@@ -93,7 +93,7 @@ def main(args):
 if __name__ == '__main__':
     usage = 'usage: %prog [options]'
     parser = argparse.ArgumentParser(description=usage)
-    parser.add_argument('event_info_file', help='Path to config file', default=None)
+    parser.add_argument('event_info_file', help='Path to configs file', default=None)
     parser.add_argument('--in_dir', type=str)
     parser.add_argument('--store_dir', type=str, default='Storage')
     args = parser.parse_args()
