@@ -1,0 +1,10 @@
+{
+  "Background": {
+      "QCD":   {"xsec": 1558}
+  },
+
+  "Signal":{
+    "haa_ma30":  {"xsec": 0.4858, "Mass": 30}
+
+  }
+}

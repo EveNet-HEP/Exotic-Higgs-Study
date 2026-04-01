@@ -29,6 +29,15 @@ Pull the Docker image for the EveNet training:
 ```aiignore
 shifterimg -v pull docker:avencast1994/evenet:1.5
 ```
+
+## Download Pre-trained Models
+To download the pre-trained models from [Hugging Face Hub](https://huggingface.co/Avencast/EveNet), you can use the following command (`local-dir` could be replaced with any path you want)
+```aiignore
+hf download Avencast/EveNet --local-dir pretrain-weights
+# nominal ckpt: checkpoints.20M.a4.last.ckpt
+# SSL ckpt: SSL.20M.last.ckpt
+```
+
 ## Dataset prepare [Hugging Face]
 The dataset used in this study is available on Hugging Face. You can access it using the following link:
 [Exotic Higgs Dataset on Hugging Face](https://huggingface.co/datasets/Avencast/EveNet-ExoticHiggs-H2a4b)

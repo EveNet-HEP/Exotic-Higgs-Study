@@ -1,0 +1,41 @@
+General:
+  Measurement: "haa_Br"
+  POI: "mu"
+  HistogramFolder: "OUTDIR"
+  InputPath: "HISTOGRAMROOT:{SamplePath}_VARIABLE_{RegionPath}{VariationPath}"
+  VariationPath: ""
+
+Regions:
+  - Name: "SR"
+    RegionPath: "SR"
+
+
+Samples:
+  - Name: "Pseudodata"
+    SamplePath: "QCD"
+    Data: True
+    DisableStaterror: True
+
+  - Name: "QCD"
+    SamplePath: "QCD"
+    DisableStaterror: True
+
+  - Name: "SIGNALNAME"
+    SamplePath: "SIGNALNAME"
+    DisableStaterror: True
+
+NormFactors:
+  - Name: "mu"
+    Samples: "SIGNALNAME"
+    Nominal: 0
+    Bounds: [0, 1]
+
+Systematics:
+  - Name: "NormQCD"
+    Up:
+      Normalization: 0.3
+    Down:
+      Normalization: -0.3
+    Type: "Normalization"
+    Samples: "QCD"
+
