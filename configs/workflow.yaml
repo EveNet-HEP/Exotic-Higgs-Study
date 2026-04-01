@@ -3,7 +3,7 @@ spanet_dir: /global/homes/t/tihsu/SPANet
 train_yaml: train.yaml
 predict_yaml: predict.yaml
 process_json: process.json
-stat_yml: Statistics_Test.yml
+stat_yaml: Statistics_Test.yaml
 #input_dir:
 #  - /global/cfs/cdirs/m2616/avencast/Event_Level_Analysis/data/HAA.20250621
 #  - /global/cfs/cdirs/m2616/avencast/Event_Level_Analysis/data/HAA.20250620
