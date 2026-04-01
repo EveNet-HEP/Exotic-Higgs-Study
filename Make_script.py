@@ -36,7 +36,6 @@ def prepare_script(args):
     process_json = os.path.abspath(control['process_json'])
     stat_yml = os.path.abspath(control['stat_yml'])
 
-    indir = control['input_dir']
 
     # ============= Candidates =============
 
