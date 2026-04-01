@@ -186,3 +186,23 @@ python3 Summary_Limit.py --store_dir [database dir]]
 #            "BackgroundRejection-unc": bkg_rejections_unc
 #        }
 ```
+
+## Computing Estimates
+The experiments in this work were performed on a computing cluster with **NVIDIA A100 40GB GPUs**.
+
+| **Hardware Configuration** | **Estimated Runtime** | **Notes**                                            | 
+|----------------------------|-----------------------|------------------------------------------------------|
+| 4 x NVIDIA A100 40GB GPU   | 20~50 mins / training | Cluster setup used in this work. Assume full dataset |
+
+
+It is important to note that this table reflects the cost of a single training/prediction run only.
+The full study reported in the paper involves multiple trainings for different settings and dataset size, and therefore requires substantially more total compute.
+
+The actual runtime may vary depending on:
+
+* data loading and I/O performance,
+* software environment (CUDA, PyTorch, etc.),
+* mixed precision settings,
+* batch size and gradient accumulation. 
+Due to the smaller GPU memory on consumer hardware compared to A100 40GB, reproducing the training may require reducing the per-device batch size, which can further increase the runtime.
+
