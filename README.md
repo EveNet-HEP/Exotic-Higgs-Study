@@ -102,7 +102,7 @@ mass_choice:
 ```
 Then you can generate the workflow scripts using the following command:
 ```aiignore
-python3 Make_script.py config/workflow.yaml --store_dir database --ray_dir [tmp dir] --Lumi 300 --farm Farm
+python3 Make_script.py configs/workflow.yaml --store_dir database --ray_dir [tmp dir] --Lumi 300 --farm Farm
 ```
 
 

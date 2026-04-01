@@ -177,7 +177,7 @@ def prepare_script(args):
                         job_name = f'evenet-ma{mass}-{pretrain}-assignment{"-on" if assignment else "-off"}-segmentation-{"on" if segmentation else "off"}-dataset_size{dataset_size}'
 
                         f.write(f"cd {working_dir}; ")
-                        f.write(f" shifter --image={config['image']} python3 scripts/train.py {file_path} --ray_dir {args.ray_dir} {'--load_all' if dataset_size < 0.2 else ''} \n")
+                        f.write(f" shifter --image={control['image']} python3 scripts/train.py {file_path} --ray_dir {args.ray_dir} {'--load_all' if dataset_size < 0.2 else ''} \n")
                         # f.write(f"python3 evenet/predict.py {os.path.abspath(file_path_predict)} \n")
     with open(os.path.join(config_farm, "predict-evenet.sh"), 'w') as f:
         # f.write(f'python3 Split_dataset.py {" ".join(indir)} --output_dir {args.store_dir}\n')
