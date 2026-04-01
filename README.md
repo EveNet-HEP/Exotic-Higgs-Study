@@ -167,3 +167,22 @@ To summarize the results, you can use the following command:
 ```aiignore
 python3 Summary_Limit.py --store_dir [database dir]]
 ```
+
+## Output Format
+```aiignore
+# The output of the evaluation will be stored in the following format:
+# metrics: BackgroundRejection@certainSignalEfficiency, AUC, etc.
+[database dir]/fit-summary/None_summaries_[metrics name].json
+# Distributions Plots/ histograms for signal and background predictions
+[database dir]/fit/[method]-assignment-[on|off]-segmentation-[on|off]-dataset_size[fraction]/haa_ma[mass]/*
+# More details for further analysis, such as ROC curves, AUC values, background rejection rates, maxSIC, etc.
+[database dir]/fit/[method]-assignment-[on|off]-segmentation-[on|off]-dataset_size[fraction]/summary/roc_results.npz
+#[signal][region] = {
+#            "AUC": roc_auc,
+#            "FPR-unc": fpr_unc,
+#            "FPR": fpr,
+#            "TPR": tpr,
+#            "BackgroundRejection": bkg_rejections,
+#            "BackgroundRejection-unc": bkg_rejections_unc
+#        }
+```
