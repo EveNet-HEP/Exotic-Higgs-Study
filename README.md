@@ -124,3 +124,13 @@ cd /global/u1/t/tihsu/Exotic-Higgs-Study/EveNet-Full; \
   shifter --image=docker:avencast1994/evenet:1.5 python3 scripts/train.py [train yaml] --ray_dir [tmp dir]
 ```
 
+## Predict EveNet (on Test Dataset)
+Similarly, all the needed prediction commands are saved in `Farm/predict-evenet.sh`, 
+please note that sequentially running all the commands in this script may also be time-consuming,
+better to prepare batch or parallel scripts to run them.
+This file basically contains the following command template for predicting with EveNet:
+```aiignore
+cd /global/u1/t/tihsu/Exotic-Higgs-Study/EveNet-Full; \
+ shifter --image=docker:avencast1994/evenet:1.5 python3 scripts/predict.py [predict yaml]
+```
+
