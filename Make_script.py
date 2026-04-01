@@ -192,7 +192,7 @@ def prepare_script(args):
                         job_name = f'evenet-ma{mass}-{pretrain}-assignment{"-on" if assignment else "-off"}-segmentation-{"on" if segmentation else "off"}-dataset_size{dataset_size}'
 
                         f.write(f"cd {working_dir}; ")
-                        f.write(f" shifter --image={config['image']} python3 scripts/predict.py {os.path.abspath(file_path_predict)} --ray_dir {args.ray_dir} \n")
+                        f.write(f" shifter --image={control['image']} python3 scripts/predict.py {os.path.abspath(file_path_predict)} --ray_dir {args.ray_dir} \n")
 
     with open(os.path.join(config_farm, "prepare-noise-up.sh"), 'w') as f:
         for noise_file in noise_predict_file_list:
