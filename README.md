@@ -42,8 +42,9 @@ hf download Avencast/EveNet-ExoticHiggs-H2a4b \
 hf download Avencast/EveNet-ExoticHiggs-H2a4b \
     evenet-train/evenet-ma30 \
     evenet-test/evenet-ma30 \
+  --resume-download \
   --repo-type dataset \
-  --local-dir database \
+  --local-dir database
 ```
 
 
