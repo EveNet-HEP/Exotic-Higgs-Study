@@ -58,6 +58,53 @@ hf download Avencast/EveNet-ExoticHiggs-H2a4b \
   --local-dir database
 ```
 
+## Script Preparation
+The training and evaluation scripts are controlled by `config/workflow.yaml`. You can modify the parameters in this file to customize the training and evaluation process.
+```yaml
+working_dir: [PATH_TO_EveNet_WORKING_DIRECTORY]
+spanet_dir: [PATH_TO_SPANet_WORKING_DIRECTORY]
+train_yaml: train.yaml [relative path under config dir] # don't need to change if you use the provided train.yaml
+predict_yaml: predict.yaml [relative path under config dir] # don't need to change if you use the provided predict.yaml
+process_json: process.json [relative path under config dir] # don't need to change if you use the provided process.json
+stat_yml: Statistics_Test.yml [relative path under config dir] # don't need to change if you use the provided Statistics_Test.yml
+account: # your project account
+email: # your email account
+time: 04:00:00 # job time
+job_flavor: regular # job flavor
+spanet:
+  project: ExoticHiggsDecay # wandb project name
+
+pretrain_choice:
+  scratch:
+    path: null 
+    option: options.yaml # use this option file if training from scratch
+  pretrain:
+    path: /global/cfs/cdirs/m5019/avencast/Checkpoints/EveNet-20M-20250901/last.ckpt
+    option: options_pretrain.yaml # use this option file if training from a pretrained model
+
+assign_seg_choice:
+  - [true, true] # first bool: assign, second bool: segment
+  - [true, false]
+  - [false, true]
+  - [false, false]
+
+dataset_size_choice:
+  - 0.01 # fraction of dataset size to use for training
+  - 0.03
+  - 0.1
+  - 0.3
+  - 1.0
+
+mass_choice:
+  - 30 # signal mass of a in GeV
+  - 40
+  - 60
+```
+Then you can generate the workflow scripts using the following command:
+```aiignore
+python3 Make_script.py config/workflow.yaml --store_dir database --ray_dir [tmp dir] --Lumi 300 --farm Farm
+```
+
 
 
 

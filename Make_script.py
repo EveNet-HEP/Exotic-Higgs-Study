@@ -54,7 +54,7 @@ def prepare_script(args):
         for mass in masses:
             f.write(f"cd {working_dir}\n")
             for split in ["train", "test"]:
-                f.write(f"shifter python3 preprocessing/convert_evenet_to_spanet.py {cwd}/configs/event_info_{mass}.yaml --in_dir {args.store_dir}/evenet-{split}/evenet-ma{mass} --store_dir {args.store_dir}/spanet-{split}/spanet-ma{mass}\n")
+                f.write(f"python3 convert_evenet_to_spanet.py {cwd}/configs/event_info_{mass}.yaml --in_dir {args.store_dir}/evenet-{split}/evenet-ma{mass} --store_dir {args.store_dir}/spanet-{split}/spanet-ma{mass}\n")
             for pretrain in pretrain_choice:
                 for assignment, segmentation in assignment_seg_choice:
                     for dataset_size in dataset_size_choice:
