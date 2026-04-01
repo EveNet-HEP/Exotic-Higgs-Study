@@ -118,6 +118,7 @@ python3 convert_evenet_to_spanet.py [event-info.yaml] --in_dir database --store_
 ## Train Evenet
 All the needed training commands are saved in `Farm/train-evenet.sh`, please note that sequentially running all the commands in this script 
 is very time-consuming, better to prepare batch or parallel scripts to run them. 
+#### Details
 This file basically contains the following command template for training EveNet:
 ```aiignore
 cd /global/u1/t/tihsu/Exotic-Higgs-Study/EveNet-Full; \
@@ -128,9 +129,41 @@ cd /global/u1/t/tihsu/Exotic-Higgs-Study/EveNet-Full; \
 Similarly, all the needed prediction commands are saved in `Farm/predict-evenet.sh`, 
 please note that sequentially running all the commands in this script may also be time-consuming,
 better to prepare batch or parallel scripts to run them.
+#### Details
 This file basically contains the following command template for predicting with EveNet:
 ```aiignore
 cd /global/u1/t/tihsu/Exotic-Higgs-Study/EveNet-Full; \
  shifter --image=docker:avencast1994/evenet:1.5 python3 scripts/predict.py [predict yaml]
 ```
 
+## Evaluate the results
+To evaluate the results, you can use the following command:
+```aiignore
+sh Farm/summary.sh
+```
+#### Details
+Basically, this script performs the following steps:
+```aiignore
+# Produce histograms for the signal and background predictions
+python3 Produce_ntuple.py /global/u1/t/tihsu/Exotic-Higgs-Study/configs/workflow.yaml --store_dir /pscratch/sd/t/tihsu/test_exotic/ --farm Farm
+# For SPANet evaluation, add the network argument to specify the model used for evaluation
+python3 Produce_ntuple.py /global/u1/t/tihsu/Exotic-Higgs-Study/configs/workflow.yaml --store_dir /pscratch/sd/t/tihsu/test_exotic/ --farm Farm --network spanet
+```
+And run the evaluation script to calculate the limits:
+```aiignore
+python3 Statistics_test.py \
+ --Lumi 300 \
+ --signal all \
+ --process_json configs/process.json \
+ --sourceFile [outdir]/ntuple/[tag]/ntuple.root \
+ --observable MVAscoreMASS \
+ --config_yml configs/Statistics_Test.yml \
+ --outdir [outdir]/fit/[tag] --log_scale &
+```
+
+
+## Summarize the results
+To summarize the results, you can use the following command:
+```aiignore
+python3 Summary_Limit.py --store_dir [database dir]]
+```
