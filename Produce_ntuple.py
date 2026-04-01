@@ -1,6 +1,4 @@
 import os, sys
-sys.path.append(os.path.abspath("../.."))
-from scipy.special import softmax
 from collections import defaultdict
 
 import yaml
@@ -9,7 +7,6 @@ import ROOT
 import array
 
 import argparse
-from copy import deepcopy
 import torch, h5py
 from evenet.control.global_config import global_config
 from evenet.network.metrics.assignment import SingleProcessAssignmentMetrics

@@ -7,3 +7,4 @@ huggingface_hub[cli]==1.7.2
 h5py==3.13.0
 torch==2.5.1
 ROOT==0.1a9
+lightning==2.5.1
