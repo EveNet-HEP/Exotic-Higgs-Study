@@ -106,5 +106,13 @@ python3 Make_script.py config/workflow.yaml --store_dir database --ray_dir [tmp 
 ```
 
 
-
+## Reformatting the data
+To reformat the data for baseline `spanet` training, you can use the following command:
+```aiignore
+sh Farm/prepare-dataset.sh
+```
+This script typically performs the following steps:
+```aiignore
+python3 convert_evenet_to_spanet.py [event-info.yaml] --in_dir database --store_dir [target dir]
+```
 
