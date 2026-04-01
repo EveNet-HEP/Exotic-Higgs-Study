@@ -228,7 +228,7 @@ def prepare_script(args):
                 out_directory = os.path.join(args.store_dir, "fit",
                                                f'spanetv2-scratch-assignment{"-on" if assignment else "-off"}-dataset_size{dataset_size}')
                 f.write(f"python3 Statistics_test.py --Lumi {args.Lumi} --signal all --process_json {process_json} --sourceFile {store_directory}/ntuple.root --observable MVAscoreMASS --config_yml {stat_yml} --outdir {out_directory} --log_scale & \n")
-        f.write(f"python3 Summary_Limit.py --store_dir {args.store_dir}\n")
+        # f.write(f"python3 Summary_Limit.py --store_dir {args.store_dir}\n")
 
     with open(os.path.join(config_farm, "train_spanet.sh"), 'w') as f:
         for mass in masses:
