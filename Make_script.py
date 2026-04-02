@@ -224,9 +224,9 @@ def prepare_script(args):
         for assignment, _ in assignment_seg_choice:
             for dataset_size in dataset_size_choice:
                 store_directory = os.path.join(args.store_dir, "ntuple",
-                                               f'spanetv2-scratch-assignment{"-on" if assignment else "-off"}-dataset_size{dataset_size}')
+                                               f'spanet-scratch-assignment{"-on" if assignment else "-off"}-dataset_size{dataset_size}')
                 out_directory = os.path.join(args.store_dir, "fit",
-                                               f'spanetv2-scratch-assignment{"-on" if assignment else "-off"}-dataset_size{dataset_size}')
+                                               f'spanet-scratch-assignment{"-on" if assignment else "-off"}-dataset_size{dataset_size}')
                 f.write(f"python3 Statistics_test.py --Lumi {args.Lumi} --signal all --process_json {process_json} --sourceFile {store_directory}/ntuple.root --observable MVAscoreMASS --config_yml {stat_yml} --outdir {out_directory} --log_scale & \n")
         # f.write(f"python3 Summary_Limit.py --store_dir {args.store_dir}\n")
 
@@ -261,7 +261,7 @@ def prepare_script(args):
                 for dataset_size in dataset_size_choice:
                     dataset_dir = f"{args.store_dir}/spanet-train/spanet-ma{mass}"
                     dataset = f"{dataset_dir}/data.h5"
-                    run_name = f'spanetv2-ma{mass}-scratch-assignment{"-on" if assignment else "-off"}-dataset_size{dataset_size}'
+                    run_name = f'spanet-ma{mass}-scratch-assignment{"-on" if assignment else "-off"}-dataset_size{dataset_size}'
                     options_file =  "options_files/exotic_higgs_decay/full_training_default_setting.json" if assignment else "options_files/exotic_higgs_decay/full_training-cls_default_setting.json"
                     log_dir = os.path.join(args.store_dir)
 #                    f.write(f"python3 -m spanet.train --event_file event_files/haa_ma{mass}.yaml -tf {dataset} --options_file {options_file} --log_dir {log_dir} --run_name {run_name} --epochs 50 --gpus 4 --limit_dataset {dataset_size * 100} --project {control['spanet']['project']} \n")
