@@ -184,7 +184,7 @@ def Generate_Test_Data(signal, config):
             bkg_rejections_unc[f"bkg_rejection_at_{int(wp * 100)}pct_signal"] =  fpr_unc[idx] * (bkg_rej * bkg_rej)
 
 
-        sic, sic_unc = convert_to_SIC(tpr, bkg_rejections, bkg_rej_unc=bkg_rejections_unc)
+        sic, sic_unc = convert_to_SIC(tpr, bkg_rejections, bkg_rejections_unc)
 
         ROC_results[region] = {
             "AUC": roc_auc,
