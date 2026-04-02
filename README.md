@@ -114,6 +114,21 @@ Then you can generate the workflow scripts using the following command:
 python3 Make_script.py configs/workflow.yaml --store_dir database --ray_dir [tmp dir] --Lumi 300 --farm Farm
 ```
 
+**Very Important Note:** The provided samples utilize 4 GPUs for running, if this is not allowed in your computer,
+
+* please tune following parameters in `configs/train.yaml` and `configs/predict.yaml` to fit your GPU number, otherwise the training/prediction may fail due to insufficient GPU resource.
+
+```yaml
+platform:
+  number_of_workers: [nGPU]
+  prefetch_batches: 2
+  resources_per_worker:
+    CPU: 30
+    GPU: 1
+```
+
+* And add `--spanet_gpu 1` when calling `Make_script.py` to make sure the generated SPANet training/prediction scripts also use 1 GPU.
+
 
 ## Reformatting the data
 To reformat the data for baseline `spanet` training, you can use the following command:
@@ -145,9 +160,29 @@ cd /global/u1/t/tihsu/Exotic-Higgs-Study/EveNet-Full; \
  shifter --image=docker:avencast1994/evenet:1.5 python3 scripts/predict.py [predict yaml]
 ```
 
-## Train SPANet (Optional)
-All the needed training commands for SPANet are saved in `Farm/train-spanet.sh`,
+## Train SPANet [Optional]
+All the needed training commands for SPANet are saved in `Farm/train_spanet.sh`.
+#### Details
+This file basically contains the following command template for training SPANet: 
+```aiignore
+cd SPANet; \
+ python3 -m spanet.train --event_file [event yaml] \
+  -tf [test file] \
+  --options_file options_files/exotic_higgs_decay/full_training-cls.json \
+  --log_dir [log dir] \
+   --run_name [name] \
+   --epochs 50 --gpus 4 --limit_dataset 10.0 -b 2048 --project [project name]
+```
 
+## Predict SPANet [Optional]
+All the needed prediction commands for SPANet are saved in `Farm/predict_spanet.sh`.
+#### Details
+This file basically contains the following command template for predicting with SPANet:
+```aiignore
+cd SPANet; \
+ python3 -m spanet.predict --event_file [event yaml] \
+  -tf [test file] \ 
+```
 
 
 ## Evaluate the results

@@ -251,7 +251,7 @@ def prepare_script(args):
                         batch_size = 512
 
                     f.write(
-                        f"cd {spanet_dir}; python3 -m spanet.train --event_file event_files/haa_ma{mass}.yaml -tf {dataset} --options_file {options_file} --log_dir {log_dir} --run_name {run_name} --epochs {epochs} --gpus 4 --limit_dataset {dataset_size * 100} -b {batch_size} --project {control['spanet']['project']} \n")
+                        f"cd {spanet_dir}; python3 -m spanet.train --event_file event_files/haa_ma{mass}.yaml -tf {dataset} --options_file {options_file} --log_dir {log_dir} --run_name {run_name} --epochs {epochs} --gpus {args.spanet_gpu} --limit_dataset {dataset_size * 100} -b {batch_size} --project {control['spanet']['project']} \n")
 
 
     with open(os.path.join(config_farm, "predict_spanet.sh"), 'w') as f:
@@ -278,6 +278,7 @@ def main():
     parser.add_argument("--noise_level", type=float, default=0.0, help="Noise level for the simulation")
     # parser.add_argument("--noise_batch", type=int, default=10, help="Target file for noise addition")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for noise generation")
+    parser.add_argument("--spanet_gpu", type=int, default=4)
     # Parse command-line arguments
     args = parser.parse_args()
     prepare_script(args)
