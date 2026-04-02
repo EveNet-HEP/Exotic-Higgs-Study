@@ -13,5 +13,6 @@ cabinetry==0.6.0
 termcolor==2.3.0
 scikit-learn==1.6.1
 seaborn==0.13.2
-opt_einsum==3.3.0
-sympy==1.11.1
+opt_einsum==3.4.0
+sympy==1.13.1
+numba==0.62.1
