@@ -265,7 +265,7 @@ def prepare_script(args):
                     options_file =  "options_files/exotic_higgs_decay/full_training_default_setting.json" if assignment else "options_files/exotic_higgs_decay/full_training-cls_default_setting.json"
                     log_dir = os.path.join(args.store_dir)
 #                    f.write(f"python3 -m spanet.train --event_file event_files/haa_ma{mass}.yaml -tf {dataset} --options_file {options_file} --log_dir {log_dir} --run_name {run_name} --epochs 50 --gpus 4 --limit_dataset {dataset_size * 100} --project {control['spanet']['project']} \n")
-                    f.write(f"python3 -m spanet.predict {log_dir}/checkpoints/{run_name} {args.store_dir}/predictions/{run_name}/predict.h5 -tf {args.store_dir}/spanet-test/spanet-ma{mass}/data.h5  --event_file event_files/haa_ma{mass}.yaml --batch_size 1024 --gpu\n")
+                    f.write(f"cd {spanet_dir}; python3 -m spanet.predict {log_dir}/checkpoints/{run_name} {args.store_dir}/predictions/{run_name}/predict.h5 -tf {args.store_dir}/spanet-test/spanet-ma{mass}/data.h5  --event_file event_files/haa_ma{mass}.yaml --batch_size 1024 --gpu\n")
 def main():
     # Set up argument parser
     parser = argparse.ArgumentParser()
