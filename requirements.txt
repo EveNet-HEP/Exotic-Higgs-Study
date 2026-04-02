@@ -14,5 +14,4 @@ termcolor==2.3.0
 scikit-learn==1.6.1
 seaborn==0.13.2
 opt_einsum==3.3.0
-numba==0.56.0
 sympy==1.11.1

@@ -1,5 +1,5 @@
 working_dir: EveNet-Full
-spanet_dir: /global/homes/t/tihsu/SPANet
+spanet_dir: SPANet
 train_yaml: train.yaml
 predict_yaml: predict.yaml
 process_json: process.json
