@@ -79,7 +79,7 @@ pretrain_choice:
     path: null 
     option: options.yaml # use this option file if training from scratch
   pretrain:
-    path: /global/cfs/cdirs/m5019/avencast/Checkpoints/EveNet-20M-20250901/last.ckpt
+    path: [your pretrained model path, e.g., pretrain-weights/checkpoints.20M.a4.last.ckpt]
     option: options_pretrain.yaml # use this option file if training from a pretrained model
 
 assign_seg_choice:
