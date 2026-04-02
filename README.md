@@ -239,6 +239,8 @@ python3 Summary_Limit.py --store_dir [database dir]]
 #            "TPR": tpr,
 #            "BackgroundRejection": bkg_rejections,
 #            "BackgroundRejection-unc": bkg_rejections_unc
+#            "SIC": sic,
+#            "SIC-unc": sic_unc,
 #        }
 ```
 

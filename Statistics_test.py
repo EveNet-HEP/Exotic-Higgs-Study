@@ -27,6 +27,16 @@ def extract_hist_data(hist):
     return bin_contents, bin_edges
 
 
+# -----------------
+# Parsing utilities
+# -----------------
+def convert_to_SIC(TPR, FPR, FPR_unc):
+    FPR = np.clip(FPR, 1e-4, 1) # Guarantee minimum background efficiency bound. This should make sure that maxSIC would not appear after background is less than 0.1% dataset <- ~10 events in our case
+    SIC = TPR / np.sqrt(FPR)
+    SIC_unc = TPR * (0.5 / (np.sqrt(FPR) ** 3)) * FPR_unc
+    return SIC, SIC_unc
+
+
 def Generate_Test_Data(signal, config):
     workspace = os.path.join(config.outdir, signal)
     CheckDir(workspace)
@@ -174,13 +184,17 @@ def Generate_Test_Data(signal, config):
             bkg_rejections_unc[f"bkg_rejection_at_{int(wp * 100)}pct_signal"] =  fpr_unc[idx] * (bkg_rej * bkg_rej)
 
 
+        sic, sic_unc = convert_to_SIC(tpr, bkg_rejections, bkg_rej_unc=bkg_rejections_unc)
+
         ROC_results[region] = {
             "AUC": roc_auc,
             "FPR-unc": fpr_unc,
             "FPR": fpr,
             "TPR": tpr,
             "BackgroundRejection": bkg_rejections,
-            "BackgroundRejection-unc": bkg_rejections_unc
+            "BackgroundRejection-unc": bkg_rejections_unc,
+            "SIC": sic,
+            "SIC-unc": sic_unc,
         }
 
     return ROC_results
