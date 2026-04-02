@@ -30,6 +30,15 @@ Pull the Docker image for the EveNet training:
 shifterimg -v pull docker:avencast1994/evenet:1.5
 ```
 
+## Install SPANet [Optional]
+To install SPANet, we have provided a SPANet repository in our [git repo](https://github.com/UW-EPE-ML/SPANet.git).
+This is folked from the original [SPANet repository](https://github.com/Alexanders101/SPANet) with a minor change to adopt event weights, 
+which is needed in our tasks.
+
+```aiignore
+git clone https://github.com/UW-EPE-ML/SPANet.git
+```
+
 ## Download Pre-trained Models
 To download the pre-trained models from [Hugging Face Hub](https://huggingface.co/Avencast/EveNet), you can use the following command (`local-dir` could be replaced with any path you want)
 ```aiignore
@@ -135,6 +144,11 @@ This file basically contains the following command template for predicting with 
 cd /global/u1/t/tihsu/Exotic-Higgs-Study/EveNet-Full; \
  shifter --image=docker:avencast1994/evenet:1.5 python3 scripts/predict.py [predict yaml]
 ```
+
+## Train SPANet (Optional)
+All the needed training commands for SPANet are saved in `Farm/train-spanet.sh`,
+
+
 
 ## Evaluate the results
 To evaluate the results, you can use the following command:
