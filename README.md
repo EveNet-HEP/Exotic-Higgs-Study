@@ -181,7 +181,9 @@ python3 Summary_Limit.py --store_dir [database dir]]
 
 # More details for further analysis, such as ROC curves, AUC values, background rejection rates, maxSIC, etc.
 [database dir]/fit/[method]-assignment-[on|off]-segmentation-[on|off]-dataset_size[fraction]/summary/roc_results.npz
-#[signal][region] = {
+
+# The `roc_results.npz` file will contain the following structure:
+#output[signal][region] = {
 #            "AUC": roc_auc,
 #            "FPR-unc": fpr_unc,
 #            "FPR": fpr,
